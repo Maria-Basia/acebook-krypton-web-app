@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getComments } from "../../services/comments";
 import { likeComment } from "../../services/like";
-import "./Comments.css";
+import "./Comment.css";
 
 const LikeButton = ({ commentId, userId, isLiked, updateComment }) => {
   const [liked, setLiked] = useState(isLiked);
@@ -36,7 +36,7 @@ const Comment = ({ postId, userId }) => {
         })
         .catch((error) => console.error("Error fetching comments:", error));
     }
-  }, [postId]);
+  }, []);
 
   const addOrdinalSuffix = (day) => {
     if (day === 1 || day === 21 || day === 31) return day + "st";
@@ -55,47 +55,49 @@ const Comment = ({ postId, userId }) => {
   };
 
   return (
-  <div>
-    {commentData.map((comment) => {
-      const date = new Date(comment.createdAt);
-      const day = addOrdinalSuffix(date.getDate());
-      const month = date.toLocaleString("en-GB", { month: "short" });
-      const time = date.toLocaleString("en-GB", {
-        hour: "numeric",
-        minute: "numeric",
-      });
+    <div>
+      {commentData.map((comment) => {
+        const date = new Date(comment.createdAt);
+        const day = addOrdinalSuffix(date.getDate());
+        const month = date.toLocaleString("en-GB", { month: "short" });
+        const time = date.toLocaleString("en-GB", {
+          hour: "numeric",
+          minute: "numeric",
+        });
 
-      const formattedDate = `${day} ${month} ${date.getFullYear()} at ${time}`;
+        const formattedDate = `${day} ${month} ${date.getFullYear()} at ${time}`;
 
-      return (
-        <div className="comment-container" key={comment._id}>
-          <div className="header-container">
-            <img
-              className="comment-profilePicture"
-              src={comment.user.profilePicture}
-            />
-            <div className="comment-fullName">{comment.user.fullName}</div>
-            {/* <div className="comment-date">{formattedDate}</div> */}
+        return (
+          <div className="comment-container" key={comment._id}>
+            <div className="comment-content">
+              <div className="comment-user">
+                <img
+                  className="comment-profilePicture"
+                  src={comment.user.profilePicture}
+                />
+                <div className="comment-date-and-name">
+                  <div className="comment-fullName">
+                    {comment.user.fullName}
+                  </div>
+                  <div className="comment-date">{formattedDate}</div>
+                </div>
+              </div>
+              <div className="comment-text">{comment.comment_text}</div>
+              <div className="comment-like-button">
+                <LikeButton
+                  commentId={comment._id}
+                  userId={userId}
+                  isLiked={comment.liked}
+                  updateComment={updateComment}
+                />
+              </div>
+              <div className="comment-like-count">{comment.likedBy.length}</div>
+            </div>
           </div>
+        );
+      })}
+    </div>
+  );
+};
 
-          
-          <div className="message">{comment.comment_text}</div>
-
-          <div className="like-and-count_container">
-            <div className="comment-like-count">{comment.likedBy.length}</div>
-            <div className="comment-like-button"><LikeButton
-              commentId={comment._id}
-              userId={userId}
-              isLiked={comment.liked}
-              updateComment={updateComment}
-            /> </div>
-          </div>
-          
-        </div>
-      );
-    })}
-  </div>
-);
-  }
-
-  export default Comment;
+export default Comment;

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { createNewPost } from "../../services/posts";
 import "./CreatePost.css";
 
-const CreatePost = () => {
+const CreatePost = ({ updatePostFeed }) => {
   const [newPost, setNewPost] = useState("");
   const [postImage, setPostImage] = useState("");
 
@@ -35,6 +35,7 @@ const CreatePost = () => {
           console.log("Post created successfully");
           setNewPost("");
           setPostImage("");
+          updatePostFeed();
         })
         .catch((error) => {
           console.error("Error creating post:", error);
@@ -43,32 +44,21 @@ const CreatePost = () => {
       console.log("Cannot submit empty post");
     }
   };
-    //new code ends here
-
-//original code below
-    //createNewPost(token, postData)
-      //.then(() => {
-        //console.log("Post created successfully");
-        //setNewPost("");
-        //setPostImage("");
-     // })
-      //.catch((error) => {
-        //console.error("Error creating post:", error);
-      //});
-  //};
-  // original code above
 
   return (
     <div className="create-post-container">
-      <input className="post-input"
+      <input
+        className="post-input"
         type="text"
         value={newPost}
         onChange={handlePostChange}
-        placeholder="Type your post message here..."
+        placeholder="Create your post..."
       />
-      
 
       <div className="buttons-container">
+        <div className="create-post">
+          <button onClick={handleSubmit}>Post</button>
+        </div>
         <label className="image-button" htmlFor="fileInput">
           Add image
         </label>
@@ -77,16 +67,9 @@ const CreatePost = () => {
           type="file"
           accept="image/*"
           onChange={handleImageChange}
-          style={{ display: 'none' }}
+          style={{ display: "none" }}
         />
-
-        <div className="create-post">
-          <button onClick={handleSubmit}>Post</button>
-        </div>
-
       </div>
-    
-
     </div>
   );
 };

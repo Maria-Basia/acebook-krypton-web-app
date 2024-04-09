@@ -6,13 +6,13 @@ const create = (req, res) => {
   const fullName = req.body.fullName;
   const profilePicture = req.body.profilePicture;
 
-  //Check if the email provider already exists
+  //Check if the email provided already exists
   User.findOne({ email: email }).then((existingUser) => {
     if (existingUser) {
       // User with the provided email already exists, respond with 409 conflict
       return res.status(409).json({ message: "Email already in use" });
     }
- 
+
     const user = new User({ email, password, fullName, profilePicture });
     user
       .save()
@@ -48,13 +48,17 @@ const UsersController = {
 };
 
 const updatePassword = async (req, res) => {
-  const userId = req.user_id; 
+  const userId = req.user_id;
   const { newPassword } = req.body;
   if (!newPassword) {
     return res.status(400).json({ message: "New password is required" });
   }
   try {
-    const updatedUser = await User.findByIdAndUpdate(userId, { password : newPassword }, { new: true });
+    const updatedUser = await User.findByIdAndUpdate(
+      userId,
+      { password: newPassword },
+      { new: true }
+    );
     if (!updatedUser) {
       return res.status(404).json({ message: "User not found" });
     }
@@ -66,6 +70,5 @@ const updatePassword = async (req, res) => {
 };
 
 UsersController.updatePassword = updatePassword;
-
 
 module.exports = UsersController;

@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { likePost } from "../../services/like";
-// import Like from "./Like";
-import CreateComment from "../Comment/CreateComment";
-import Comment from "../Comment/Comments";
+import Comment from "../../components/Comment/Comment";
+import CreateComment from "../../components/Comment/CreateComment";
 import "./Post.css";
 
 const LikeButton = ({ postId, userId, isLiked, updatePost }) => {
@@ -25,15 +24,15 @@ const LikeButton = ({ postId, userId, isLiked, updatePost }) => {
   );
 };
 
-const Post = ({ post, userId }) => {
+const Post = ({ post, userId, updatePostFeed }) => {
   const [liked, setLiked] = useState(post.liked);
 
   const updatePost = (postId, liked) => {
     // Update the state of the post
     setLiked(liked);
+    updatePostFeed();
   };
 
-  const token = localStorage.getItem("token");
   const addOrdinalSuffix = (day) => {
     if (day === 1 || day === 21 || day === 31) return day + "st";
     if (day === 2 || day === 22) return day + "nd";
@@ -53,26 +52,21 @@ const Post = ({ post, userId }) => {
 
   return (
     <article className="post" key={post._id}>
-      <div className="post-header-container">
-        <img
-          className="post-profile_picture"
-          src={post.user ? post.user.profilePicture : ""}
-          alt="Profile"
-        />
-        <p className="post-user-fullName">
-          {post.user ? post.user.fullName : ""}
-        </p>
-        <p className="post-date">{formattedDate}</p>
-      </div>
-      <div className="post-message">
-        <p>{post.message}</p>
+      <div className="post-border">
+        <div className="post-header-container">
+          <img
+            className="post-profile_picture"
+            src={post.user.profilePicture}
+          />
+          <div>
+            <div className="post-user-fullName">{post.user.fullName}</div>
+            <div className="post-date">{formattedDate}</div>
+          </div>
+        </div>
         {post.image && (
-          <img className="postgit_image" src={post.image} alt="Post" />
+          <img className="post_image" src={post.image} alt="Post" />
         )}
-      </div>
-
-      <div className="like-and-count_container">
-        <div className="post-like-counter">{post.likedBy.length}</div>
+        <div className="post-message">{post.message}</div>
         <div className="post-like-button">
           <LikeButton
             postId={post._id}
@@ -81,12 +75,13 @@ const Post = ({ post, userId }) => {
             updatePost={updatePost}
           />
         </div>
-      </div>
-      <div className="comments">
-        <Comment postId={post._id} token={token} />
+        <div className="post-like-counter">{post.likedBy.length}</div>
       </div>
       <div className="create-comment">
         <CreateComment postId={post._id} />
+      </div>
+      <div>
+        <Comment postId={post._id} />
       </div>
     </article>
   );

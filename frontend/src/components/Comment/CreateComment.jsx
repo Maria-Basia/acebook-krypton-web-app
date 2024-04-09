@@ -28,11 +28,12 @@ const CreateComment = ({ postId }) => {
 
   return (
     <div className="create-comment-container">
-      <input className="comment-input"
+      <input
+        className="comment-input"
         type="text"
         value={newComment}
         onChange={handleChange}
-        placeholder="Type your comment here"
+        placeholder="Enter comment..."
       />
       <div className="create_comment_button">
         <button onClick={handleSubmit}>Create Comment</button>

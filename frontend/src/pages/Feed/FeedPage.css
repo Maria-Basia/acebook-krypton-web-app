@@ -1,11 +1,16 @@
+body {
+  background-color: #ffffff;
+}
+
 .feed-page {
   position: absolute;
-  top: 0;
-  left: 500px;
-  margin-top: 80px; /* Adjust this value according to your navbar height */
+  top: 50%;
+  left: 50%;
+  margin-top: -40vh; /* Half of the container's height */
+  margin-left: -22.5%; /* Half of the container's width */
   background-color: #ffffff;
   width: 45%;
-  height: 100vh;
+  height: 80vh; /* Adjusted to make it more centered */
 }
 
 .createpost {

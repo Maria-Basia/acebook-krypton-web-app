@@ -87,32 +87,6 @@ const likePost = async (req, res) => {
   }
 };
 
-// try {
-//     const { postId, userId } = req.body;
-
-//     // Check if the user has already liked the post
-//     const existingLike = await Like.findOne({ post: postId, user: userId });
-
-//     if (existingLike) {
-//       // User has already liked the post, so remove the like
-//       await existingLike.remove();
-//     } else {
-//       // User has not liked the post yet, so create a new like
-//       const newLike = new Like({ post: postId, user: userId });
-//       await newLike.save();
-//     }
-
-//     // Update the like counter in the corresponding post
-//     const likeCount = await Like.countDocuments({ post: postId });
-//     await Post.findByIdAndUpdate(postId, { $set: { likeCounter: likeCount } });
-
-//     // Return success response
-//     res.status(200).json({ message: "Post liked/unliked successfully" });
-//   } catch (error) {
-//     console.error("Error liking post:", error);
-//     res.status(500).json({ message: "Internal server error" });
-//   }
-
 const PostsController = {
   getAllPosts: getAllPosts,
   createPost: createPost,

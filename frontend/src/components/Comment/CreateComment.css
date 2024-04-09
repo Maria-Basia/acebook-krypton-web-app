@@ -6,7 +6,8 @@
 .comment-input {
   font-size: 16px;
   line-height: 1.6;
-  margin-bottom: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   border: 1px solid #bbbaba;
   border-radius: 8px;
   font: Helvetica;
@@ -14,5 +15,6 @@
 }
 
 .create_comment_button {
-  margin-left: 700px;
+  margin-left: auto;
+  margin-bottom: 30px;
 }

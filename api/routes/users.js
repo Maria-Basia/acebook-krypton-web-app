@@ -1,9 +1,8 @@
 const tokenChecker = require("../middleware/tokenChecker");
 const express = require("express");
+const router = express.Router();
 
 const UsersController = require("../controllers/users");
-
-const router = express.Router();
 
 router.get("/", tokenChecker, UsersController.getProfile);
 router.post("/", UsersController.create);

@@ -35,6 +35,7 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="navbar__left">
         <img className="navbar_profile_pic" src={userData.profilePicture} />
+        <div className="navbar_user_name">Hello {userData.fullName}</div>
       </div>
       <div className="navbar__right">
         <Link to="/posts">Home</Link>

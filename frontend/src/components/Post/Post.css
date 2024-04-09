@@ -1,77 +1,86 @@
 .post {
-  /* position: absolute; */
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 15px;
-  margin-bottom: 10px;
   background-color: #fff;
   display: flex;
-  flex-direction: column; /* Arrange elements vertically */
+  flex-direction: column;
+}
+
+.post-border {
+  border: 1px solid #bbbaba;
+  border-radius: 8px;
+  padding: 15px;
 }
 
 .post-header-container {
   display: flex;
+  align-items: center;
   border-radius: 10px;
-  margin-bottom: 25px;
   background-color: #ededed;
-  width: 100%; /* Set the width to 100% */
 }
 
 .post-profile_picture {
-  width: 50px; /* Adjust size as needed */
-  height: 50px; /* Adjust size as needed */
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
-  margin-left: 20px; /* Add margin between image and text */
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
-
-.post_image {
-  outline: 2px solid #eceaea; /* Add outline */
-  margin-left: 20px; /* Add margin between image and text */
-  margin-top: 10px;
-}
-
-.post-details {
-  flex-grow: 1;
+  margin-left: 10px;
 }
 
 .post-user-fullName {
   font-weight: bold;
-  margin-left: 20px;
-  margin-bottom: 10px;
-  margin-top: 20px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  margin-right: 20px;
 }
 
 .post-date {
   font-size: 14px;
   color: #000000;
   margin-bottom: 5px;
-  margin-top: 22px;
-  margin-left: 30px;
+  margin-left: 10px;
 }
 
-.post-message {
+.post_image {
+  margin: 10px;
+  margin-top: 10px;
+  max-width: calc(100% - 150px);
+  height: auto;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.post-text {
   font-size: 16px;
   line-height: 1.6;
-  margin-bottom: 15px;
-  align-items: left;
-  border: 1px solid #bbbaba;
-  border-radius: 8px;
+  padding: 20px;
   font: Helvetica;
-}
-
-.like-and-count_container {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-}
-
-.post-like-counter {
-  margin-right: 10px;
+  word-wrap: break-word;
 }
 
 .post-like-button {
-  margin-bottom: 15px;
-  margin-left: 1px;
+  padding: 8px 16px; /* Adjust padding */
+  background-color: #337ab7; /* Default background color */
+  color: #fff; /* Default text color */
+  border: 2px solid #337ab7;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+  float: right;
+}
+
+.post-like-button:hover {
+  background-color: #23527c; /* Background color on hover */
+}
+
+/* Unlike button */
+.post-like-button.unliked {
+  background-color: #d9534f; /* Adjust background color */
+}
+
+.post-like-button.unliked:hover {
+  background-color: #c9302c; /* Background color on hover */
+}
+
+.post-like-counter {
+  float: right;
+  margin-right: 10px;
 }
