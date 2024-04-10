@@ -1,3 +1,8 @@
+.createpost {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
 .post {
   background-color: #fff;
   display: flex;
@@ -56,28 +61,7 @@
 }
 
 .post-like-button {
-  padding: 8px 16px; /* Adjust padding */
-  background-color: #337ab7; /* Default background color */
-  color: #fff; /* Default text color */
-  border: 2px solid #337ab7;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 14px;
-  transition: background-color 0.3s ease;
   float: right;
-}
-
-.post-like-button:hover {
-  background-color: #23527c; /* Background color on hover */
-}
-
-/* Unlike button */
-.post-like-button.unliked {
-  background-color: #d9534f; /* Adjust background color */
-}
-
-.post-like-button.unliked:hover {
-  background-color: #c9302c; /* Background color on hover */
 }
 
 .post-like-counter {

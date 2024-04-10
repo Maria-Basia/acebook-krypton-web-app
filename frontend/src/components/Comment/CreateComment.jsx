@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { createNewComment } from "../../services/comments";
 import "./CreateComment.css";
 
-const CreateComment = ({ postId }) => {
+const CreateComment = ({ postId, updateCommentFeed }) => {
   const [newComment, setNewComment] = useState("");
 
   const handleChange = (event) => {
@@ -20,6 +20,7 @@ const CreateComment = ({ postId }) => {
       .then(() => {
         console.log("Comment created successfully");
         setNewComment("");
+        updateCommentFeed();
       })
       .catch((error) => {
         console.error("Error creating post:", error);

@@ -17,7 +17,6 @@ const PostSchema = new mongoose.Schema({
 // use to construct entries in our Database.
 const Post = mongoose.model("Post", PostSchema);
 
-
 // const dateTimeString = new Date().toLocaleString("en-GB");
 // new Post({
 //   message: "update model post",
@@ -27,6 +26,5 @@ const Post = mongoose.model("Post", PostSchema);
 //   user: "66018bc48a87746692806ab5",
 //   createdAt: new Date(),
 // }).save();
-
 
 module.exports = Post;

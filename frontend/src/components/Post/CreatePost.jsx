@@ -19,30 +19,26 @@ const CreatePost = ({ updatePostFeed }) => {
       setPostImage(base64Image);
     };
     reader.readAsDataURL(file);
-    console.log("Selected file:", file); //WORKED!! Stored in DB
+    console.log("Selected file:", file);
   };
 
   const handleSubmit = () => {
     const token = localStorage.getItem("token");
     const postData = {
-      message: newPost,
       image: postImage,
+      message: newPost,
     };
-    //new code starts here
-    if (newPost.trim() !== "" || postImage) {
-      createNewPost(token, postData)
-        .then(() => {
-          console.log("Post created successfully");
-          setNewPost("");
-          setPostImage("");
-          updatePostFeed();
-        })
-        .catch((error) => {
-          console.error("Error creating post:", error);
-        });
-    } else {
-      console.log("Cannot submit empty post");
-    }
+    createNewPost(token, postData)
+      .then(() => {
+        console.log("Post created successfully");
+        setNewPost("");
+        setPostImage("");
+        updatePostFeed();
+      })
+      .catch((error) => {
+        console.error("Error creating post:", error);
+      });
+    console.log("Cannot submit empty post");
   };
 
   return (

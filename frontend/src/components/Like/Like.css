@@ -1,27 +1,27 @@
-/* .like-post {
+.like {
   padding: 8px 16px;
   background-color: #337ab7;
-  color: #fff; Default text color
+  color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 14px;
-  transition: background-color 0.3s ease;
 }
 
-.like-post:hover {
-  background-color: #23527c;  Background color on hover
+.like:hover {
+  background-color: #23527c;
 }
 
-Unlike button
-.like-post.unliked {
-    background-color: #d9534f; Adjust background color 
+.unlike {
+  padding: 8px 16px;
+  background-color: #d9534f;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
 }
 
-.like-post.unliked:hover {
-    background-color: #c9302c; Background color on hover
+.unlike:hover {
+  background-color: #c9302c;
 }
-
-This css is redundant because the like button component is redundant.
-The like button is being incorporated into the Post.jsx file and 
-Comments.jsx file individually, so they have their own individual css
