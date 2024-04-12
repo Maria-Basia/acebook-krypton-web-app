@@ -8,7 +8,7 @@ export const likePost = async (postId) => {
       Authorization: `Bearer ${token}`,
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ postId }), // Send both postId and userId in the request body
+    body: JSON.stringify({ postId }),
   };
 
   const response = await fetch(`${BACKEND_URL}/posts/like`, requestOptions);
@@ -26,7 +26,7 @@ export const likeComment = async (commentId) => {
       Authorization: `Bearer ${token}`,
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ commentId }), // Send both postId and userId in the request body
+    body: JSON.stringify({ commentId }),
   };
 
   const response = await fetch(`${BACKEND_URL}/comments/like`, requestOptions);

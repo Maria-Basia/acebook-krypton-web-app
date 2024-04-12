@@ -4,8 +4,10 @@ import { LikeCommentButton } from "../Like/Like";
 import CreateComment from "./CreateComment";
 import "./Comments.css";
 
-const Comments = ({ postId, userId }) => {
+const Comments = ({ postId }) => {
   const [commentData, setCommentData] = useState([]);
+
+  const loggedInUser = localStorage.getItem("userId");
 
   const fetchComments = () => {
     const token = localStorage.getItem("token");
@@ -66,8 +68,7 @@ const Comments = ({ postId, userId }) => {
                 <div className="comment-like-button">
                   <LikeCommentButton
                     commentId={comment._id}
-                    userId={userId}
-                    isLiked={comment.liked}
+                    isLiked={comment.likedBy.includes(loggedInUser)}
                     updateCommentLikeFeed={fetchComments}
                   />
                 </div>

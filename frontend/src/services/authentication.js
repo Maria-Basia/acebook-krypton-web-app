@@ -20,7 +20,7 @@ export const login = async (email, password) => {
   // docs: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/201
   if (response.status === 201) {
     let data = await response.json();
-    return data.token;
+    return [data.token, data.userId];
   } else if (response.status === 401) {
     let errorData = await response.json();
     if (errorData.message === "User not found") {
@@ -56,16 +56,17 @@ export const signup = async (email, password, fullName, profilePicture) => {
   let response = await fetch(`${BACKEND_URL}/users`, requestOptions);
 
   // docs: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/201 //If status is 201, user is successfully logged in
-  if (response.status === 201) { 
+  if (response.status === 201) {
     return;
-  } else if (response.status === 409) { //response to our duplicate user error(status 409)
+  } else if (response.status === 409) {
+    //response to our duplicate user error(status 409)
     throw new Error("Email already in use");
   } else {
     throw new Error(
       `Received status ${response.status} when signing up. Expected 201`
     );
   }
-}; 
+};
 
 export const getUserProfile = async (token) => {
   const requestOptions = {

@@ -5,7 +5,6 @@ import "./Like.css";
 
 export const LikeCommentButton = ({
   commentId,
-  userId,
   isLiked,
   updateCommentLikeFeed,
 }) => {
@@ -13,13 +12,15 @@ export const LikeCommentButton = ({
 
   const handleLike = async () => {
     try {
-      await likeComment(commentId, userId);
+      await likeComment(commentId);
       setLiked(!liked);
       updateCommentLikeFeed();
     } catch (error) {
       console.error("Error liking comment:", error);
     }
   };
+
+  console.log(isLiked);
 
   return (
     <button className={!liked ? "like" : "unlike"} onClick={handleLike}>
@@ -28,17 +29,12 @@ export const LikeCommentButton = ({
   );
 };
 
-export const LikePostButton = ({
-  postId,
-  userId,
-  isLiked,
-  updatePostLikeFeed,
-}) => {
+export const LikePostButton = ({ postId, isLiked, updatePostLikeFeed }) => {
   const [liked, setLiked] = useState(isLiked);
 
   const handleLike = async () => {
     try {
-      await likePost(postId, userId);
+      await likePost(postId);
       setLiked(!liked);
       updatePostLikeFeed();
     } catch (error) {

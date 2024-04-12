@@ -6,10 +6,12 @@ import { useNavigate } from "react-router-dom";
 import Comments from "../Comment/Comments";
 import "./Posts.css";
 
-const Posts = ({ userId }) => {
+const Posts = () => {
   const [posts, setPosts] = useState([]);
 
   const navigate = useNavigate();
+
+  const loggedInUser = localStorage.getItem("userId");
 
   const fetchPosts = () => {
     const token = localStorage.getItem("token");
@@ -77,8 +79,7 @@ const Posts = ({ userId }) => {
                 <div className="post-like-button">
                   <LikePostButton
                     postId={post._id}
-                    userId={userId}
-                    isLiked={post.liked}
+                    isLiked={post.likedBy.includes(loggedInUser)}
                     updatePostLikeFeed={fetchPosts}
                   />
                 </div>
