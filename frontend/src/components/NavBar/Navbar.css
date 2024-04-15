@@ -5,7 +5,7 @@
   width: 100%;
   display: flex;
   justify-content: space-between; /* Add this to push the profile picture to the left and links to the right */
-  align-items: center; /* Center vertically */
+  align-items: center;
   padding: 5px;
   background-color: #1b83a4;
   z-index: 999;
@@ -36,14 +36,9 @@
 }
 
 .navbar__right a:hover {
-  color: #ffffff; /* Change text color on hover */
-  background-color: rgba(
-    255,
-    255,
-    255,
-    0.1
-  ); /* Change background color on hover */
-  border-color: #fff; /* Change border color on hover */
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: #fff;
 }
 
 .navbar__right a {
@@ -59,11 +54,11 @@
 }
 
 .navbar_profile_pic {
-  width: 45px; /* Adjust size as needed */
-  height: 45px; /* Adjust size as needed */
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
 
-  margin-left: 10px; /* Add margin between image and text */
+  margin-left: 10px;
   margin-top: 5px;
   margin-bottom: 5px;
 }

@@ -30,7 +30,6 @@
   float: right;
 }
 
-/* Hover state */
 .image-button:hover {
-  background-color: #ffffff; /* Change background color on hover */
+  background-color: #ffffff;
 }

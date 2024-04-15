@@ -3,7 +3,7 @@
   padding: 15px;
   margin-bottom: 10px;
   background-color: #fff;
-  border: 1px solid #ccc; /* Add border around the comment */
+  border: 1px solid #ccc;
   border-radius: 8px;
   display: flex;
 }
